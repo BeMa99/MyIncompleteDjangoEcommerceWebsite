@@ -1,0 +1,47 @@
+[
+{
+  "model": "MiApp.producttag",
+  "fields": {
+    "name": "Design with PC",
+    "slug": "autocad",
+    "description": "",
+    "active": true
+  }
+},
+{
+  "model": "MiApp.producttag",
+  "fields": {
+    "name": "Older OOP",
+    "slug": "c",
+    "description": "",
+    "active": true
+  }
+},
+{
+  "model": "MiApp.producttag",
+  "fields": {
+    "name": "Haskell",
+    "slug": "haskell-tutorial",
+    "description": "",
+    "active": true
+  }
+},
+{
+  "model": "MiApp.producttag",
+  "fields": {
+    "name": "Web Front-end",
+    "slug": "html5-tutorial",
+    "description": "",
+    "active": true
+  }
+},
+{
+  "model": "MiApp.producttag",
+  "fields": {
+    "name": "Real Web Knowledge",
+    "slug": "html5-tutorial",
+    "description": "",
+    "active": true
+  }
+}
+]

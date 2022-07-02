@@ -1,0 +1,57 @@
+<html>
+{% extends "hello.html"%}
+{% block content %}
+<head>
+<meta charset = "utf-8">
+<title>Contact Us</title>
+</head>
+<body style = "text-align:center">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id = "cde">
+
+<a class="navbar-brand" href="/">MiApp App</a>
+
+<button class = "navbar-toggler" type = "button" data-toggle="collapse" data-target="#navbarSupportedContent">
+<span class = "navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id = "navbarSupportedContent">
+<ul class = "navbar-nav mr-auto">
+<li class="nav-item {% if request.path == "/" %}active{% endif %}">
+<a class="nav-link" href="/">HOME</a>
+</li>
+<li class="nav-item {% if request.path == 'products/' %}active{% endif %}">
+<a class="nav-link" href="/products/all/">PRODUCTS</a>
+</li>
+<li class="nav-item {% if request.path == 'signup/' %}active{% endif %}">
+<a class="nav-link" href="/signup/">JOIN US</a>
+</li>
+</ul>
+</div>
+
+</nav>
+<div class = "container" id = "overall_background">
+<div id = "qwert" class = "row-md-6" style = "padding-bottom:50px; margin-top:50px; background-color:#fcb69f; box-shadow:inset 2px -2px 2px, inset -2px 2px 2px ;">
+<div id = "swapper">
+<h1>Contact Us</h1>
+<p>Comment below. We give feedback as soon as possible.</p></br>
+<form action = "/aboutUs/thanks/" method = 'POST'>
+<table>
+     {{ form.as_table }}
+     <tr>
+       <td>&nbsp;</td>
+       <td><input type = "submit" name = "customer_form" class = "btn btn-primary" value = "Submit" style = "background-color:#c79081"/></td>
+     </tr>
+</table>
+{% csrf_token %}
+</form>
+
+<p style = "font-family:courier">ORRRRR!!!!!.</br>
+<a class = "btn btn-primary" style = "background-color:#c79081" href = "tel:+254718808824">PHONE</a></br>
+<a class = "btn btn-primary" style = "background-color:#c79081" href = "https://twitter.com/BerclayM" target = "_blank">TWITTER</a></br>
+</p>
+</div>
+</div>
+</div>
+</body>
+{% endblock content %}
+</html>

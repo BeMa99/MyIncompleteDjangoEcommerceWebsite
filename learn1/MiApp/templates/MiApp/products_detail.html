@@ -1,0 +1,59 @@
+<html>
+{% extends "hello.html" %}
+{% block content %}
+<body  style = "text-align:center">
+<div class = "container" id = "overall_background">
+<div id = "abc" class = "row-md-6" style = "padding-bottom:50px; background-color:#feada6; box-shadow:inset 2px -2px 2px, inset -2px 2px 2px ;">
+
+<h1>Product!</h1>
+<table  class = "table">
+<tr>
+<th>Name</th>
+<td>{{ object.name }}</td>
+</tr>
+<tr>
+<th>Cover Images</th>
+<td>
+{% for image in object.productimage_set.all %}
+<img src = "{{image.thumbnail.url}}" alt = "cover"/>
+{% endfor %}
+</td>
+</tr>
+<tr>
+<th>Price</th>
+<td>{{ object.price }}</td>
+</tr>
+<tr>
+<th>Description</th>
+<td>{{ object.description|linebreaks }}</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td>{{ object.tags.all|join:", "|default:"no tags available" }}</td>
+<!--If a model has a foreign key to another table, it is possible to 
+call the methods of the related managers by just specifying their names. 
+object.tags.all in templates, for example, is equivalent to object.tags.
+all() in Python.-->
+</tr>
+<tr>
+<th>In Stock</th>
+<td>{{ object.in_stock|yesno|capfirst }}</td>
+</tr>
+<tr>
+<th>Updated</th>
+<td>{{ object.date_updated|date:"F Y" }}</td>
+</tr>
+</table>
+</div>
+</div>
+</body>
+{% endblock content %}
+<!--linebreaks takes the content of the description field and generates a 
+<p> tag for every new line that is in the field. join joins a list of strings with 
+the specified separator. default outputs its argument in case the current 
+output is None.
+yesno converts true/false to the strings yes/no. capfirst capitalizes 
+the first word. date is useful when converting date objects into a string, 
+and it is possible to specify a format. The format in this case is month and 
+year only.-->
+</html>

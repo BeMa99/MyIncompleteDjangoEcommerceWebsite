@@ -1,0 +1,75 @@
+<html>
+{% extends "hello.html"%}
+{% load static %}
+{% block content %}
+<head>
+<meta charset = "utf-8">
+<meta name = "viewport" content = "device-width, initial-scale = 1.0">
+<title>what We Offer</title>
+</head>
+<body style = "text-align:center">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id = "cde">
+
+<a class="navbar-brand" href="/">MiApp App</a>
+
+<button class = "navbar-toggler" type = "button" data-toggle="collapse" data-target="#navbarSupportedContent">
+<span class = "navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id = "navbarSupportedContent">
+<ul class = "navbar-nav mr-auto">
+<li class="nav-item {% if request.path == "/" %}active{% endif %}">
+<a class="nav-link" href="/">HOME</a>
+</li>
+<li class="nav-item {% if request.path == 'aboutUs/' %}active{% endif %}">
+<a class="nav-link" href="/aboutUs/">ABOUT US</a>
+</li>
+<li class="nav-item {% if request.path == 'signup/' %}active{% endif %}">
+<a class="nav-link" href="/signup/">JOIN US</a>
+</li>
+</ul>
+</div>
+
+</nav>
+<div class = "container" id = "overall_background">
+<div id = "abc" class = "row-md-6" style = "padding-bottom:50px; background-color:#feada6; box-shadow:inset 2px -2px 2px, inset -2px 2px 2px ;">
+<h1>Products!</h1>
+{% for products in page_obj %}
+<p>{{products.name}}</p>
+<p><a href = "{% url 'MiApp:products/detail' products.slug %}">Check it out!</a></p>
+{% if not forloop.last %}
+<hr>
+{% endif %}
+{% endfor %}
+<nav>
+<ul class = "pagination">
+{% if page_obj.has_previous %}
+<li class = "page-item">
+<a class = "page-link" href = "?page={{page_obj.previous_page_number}}">Previous</a>
+</li>
+{% else %}
+<li class = "page-item disabled">
+<a class = "page-link" href = "#">Previous</a>
+</li>
+{% endif %}
+{% for pagenum in page_obj.paginator.page_range %}
+<li class = "page-item{% if page_obj.number == pagenum %}active{% endif %}">
+<a class = "page-link" href = "?page = {{pagenum}}">{{pagenum}}</a>
+</li>
+{% endfor %}
+{% if page_obj.has_next %}
+<li class = "page-item">
+<a class = "page-link" href = "?page={{page_obj.next_page_number}}">Next</a>
+</li>
+{% else %}
+<li class = "page-item disabled">
+<a class = "page-link" href = "#">Next</a>
+</li>
+{% endif %}
+</ul>
+</nav>
+</div>
+</div>
+</body>
+{% endblock content %}
+</html>

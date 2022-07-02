@@ -1,0 +1,31 @@
+<html>
+{% extends "hello.html" %}
+{% load static %}
+{% block content %}
+<body style = "text-align:center">
+<div class = "container" id = "overall_background">
+<div id = "abc" class = "row-md-6" style = "padding-bottom:50px; background-color:#feada6; box-shadow:inset 2px -2px 2px, inset -2px 2px 2px ;">
+<h1> List Of Addresses </h1>
+{% for address in object_list %}
+<p>
+{{address.name}}</br>
+{{address.address1}}</br>
+{{address.address2}}</br>
+{{address.city}}</br>
+{{address.get_country_display}}</p>
+<p>
+<a href = "{% url 'MiApp:address_update' address.id%}">Update address</a>
+</p>
+<p>
+<a href = "{% url 'MiApp:address_delete' address.id%}">Delete address</a>
+</p>
+{% if not forloop.last %}</hr>{% endif %}
+{% endfor %}
+<p>
+<a href = "{% url 'MiApp:address_create' %}">Add new address</a>
+</p>
+</div>
+</div>
+</body>
+{% endblock content %}
+</html>

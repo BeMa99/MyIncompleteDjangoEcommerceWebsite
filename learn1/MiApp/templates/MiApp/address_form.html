@@ -1,0 +1,18 @@
+<html>
+{% extends "hello.html" %}
+{% load static %}
+{% block content %}
+<body style = "text-align:center">
+<div class = "container" id = "overall_background">
+<div id = "abc" class = "row-md-6" style = "padding-bottom:50px; background-color:#feada6; box-shadow:inset 2px -2px 2px, inset -2px 2px 2px ;">
+<h1>Add New Address</h1>
+<form method = "POST">
+{% csrf_token %}
+{{ form.as_p }}
+<button type = "submit" class = "btn btn-primary" style = "background-color:#c79081">Submit</button>
+<form>
+</div>
+</div>
+</body>
+{% endblock content %}
+</html>

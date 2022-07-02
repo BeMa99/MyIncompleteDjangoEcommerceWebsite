@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta charset = "utf-8">
+{% load static %}
+<link rel = "stylesheet" href ="{% static 'css/bootstrap.min.css' %}">
+<meta name = "viewport" content = "device-width, initial-scale = 1.0">
+<title>learn1</title>
+</head>
+<body style = "text-align:center">
+{% if request.basket %}
+<div>
+{{ request.basket.count }}
+items in basket
+</div>
+{% endif %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id = "cde">
+
+<a class="navbar-brand" href="/">MiApp App</a>
+
+<button class = "navbar-toggler" type = "button" data-toggle="collapse" data-target="#navbarSupportedContent">
+<span class = "navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id = "navbarSupportedContent">
+<ul class = "navbar-nav mr-auto">
+<li class="nav-item {% if request.path == 'aboutUs/' %}active{% endif %}">
+<a class="nav-link" href="/aboutUs/">ABOUT US</a>
+</li>
+<li class="nav-item {% if request.path == 'products/' %}active{% endif %}">
+<a class="nav-link" href="/products/all/">PRODUCTS</a>
+</li>
+<li class="nav-item {% if request.path == 'signup/' %}active{% endif %}">
+<a class="nav-link" href="/signup/">JOIN US</a>
+</li>
+</ul>
+</div>
+
+</nav>
+<h1>learn1</h1>
+<h2>Welcome to my application!!</h2>
+<div class = "container" id = "overall_background">
+
+<div class = "column">
+<div class = "row-md-6" style = "padding-bottom:50px;margin-bottom:50px; background-color:#ffde22; color:gray; box-shadow:inset -2px 2px 2px, inset 2px -2px 2px;">
+<img src = "{% static 'images/Capture.PNG' %}" alt = "signed" height = "80px" width = "80px" style = "margin-top:10px;">Welcome to Trial example with bootstrap</br>
+<img src = "{% static 'images/img10.jpeg' %}" alt = "page 1 image" height = "500px" width = "500px"></br>
+</div>
+
+<div id = "cvb" class = "row-md-6" style = "margin-top:50px; margin-bottom:50px; background-color:black; box-shadow:inset 2px -2px 2px, inset -2px 2px 2px ;">
+<button onclick = "window.location.href = '#cde'" style = "background-color:#a1c4fd;">Back to the top</button>
+</div>
+</div>
+</div>
+{% endblock content %}
+<script type = "text/javascript">
+function sentConfirm()
+{
+	alert("Submit Button Clicked!");
+	var ourDiv = document.getElementById("qwert");
+	var swapMe = document.getElementById("swapper");
+	var newImg = document.createElement("img"); 
+	// Create a new image element
+	newImg.setAttribute( "src", "images/img.jpeg" ); 
+	// Give the new image a "src" attribute
+	ourDiv.replaceChild( newImg, swapMe );
+}
+var dt = Date();
+document.write("Date and Time : " + dt );
+</script>
+<script src = "{% static 'bootstrap-5.0.0-beta3-dist/js/bootstrap.min.js' %}"></script>
+<script src = "{% static 'jquery-3.6.0.slim.min.js'%}"></script>
+</body>
+</html>
